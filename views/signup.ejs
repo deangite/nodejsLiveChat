@@ -24,7 +24,7 @@
                                 <span class="icon-bar"></span>
                             </button>
                             <h1 class="logo-div">
-                                <a href="/">Footballkik</a>
+                                <a href="/">Chat App</a>
                             </h1>
                         </div>
 
@@ -66,6 +66,15 @@
             <h1>
                 Register
             </h1>
+
+            <% if(hasErrors){ %>
+                <div class="alert alert-danger text-center">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="clase">&times;</a>
+                    <% messages.forEach(function(message){ %> 
+                        <%= message %> <br>
+                    <% }) %>
+                </div>
+            <% } %>
 
             <div class="inset">
                 <p>

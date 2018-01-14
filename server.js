@@ -12,10 +12,10 @@ const passport = require('passport')
 
 const container = require('./container')
 
-container.resolve(function(users){
+container.resolve(function(users, _){
 
     mongoose.Promise = global.Promise
-    mongoose.connect('mongodb://localhost/chatApp', {useMongoClient: true})
+    mongoose.connect('mongodb://localhost:27017/chatApp', {useMongoClient: true})
 
     const app = SetupExpress()
 
@@ -56,6 +56,8 @@ container.resolve(function(users){
         app.use(flash())
         app.use(passport.initialize())
         app.use(passport.session())
+
+        app.locals._ = _
     }
 
 })

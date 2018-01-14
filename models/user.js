@@ -14,11 +14,11 @@ const userSchema = mongoose.Schema({
 })
 
 userSchema.methods.encryptPassword = (password) => {
-    return bcrypt.hashSync(password, bcrypt.genSaltSync(10), null)
+    bcrypt.hashSync(password, bcrypt.genSaltSync(10), null)
 }
 
 userSchema.methods.validUserPassword = (password) => {
-    return bcrypt.compareSync(password, this.password)
+    bcrypt.compareSync(password, this.password)
 }
 
 module.exports = mongoose.model('User', userSchema)
