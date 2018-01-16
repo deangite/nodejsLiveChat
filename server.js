@@ -35,11 +35,10 @@ container.resolve(function(users, _){
         app.use(router)
     }
 
-    
-
     function ConfigureExpress(app){
         require('./passport/passport-local')
         require('./passport/passport-facebook')
+        require('./passport/passport-google')
 
         app.use(express.static('public'))
         app.use(cookieParser())

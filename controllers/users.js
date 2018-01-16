@@ -8,6 +8,8 @@ module.exports = function(_, User){
             router.get('/home', this.homePage)
             router.get('/auth/facebook', this.getFacebookLogin)
             router.get('/auth/facebook/callback', this.getFacebookLoginCallback)
+            router.get('/auth/google', this.getGoogleLogin)
+            router.get('/auth/google/callback', this.getGoogleLoginCallback)
 
             router.post('/', User.LoginValidation, this.postLogin)
             router.post('/signup', User.SignUpValidation, this.postSignUp)
@@ -46,6 +48,15 @@ module.exports = function(_, User){
             failureRedirect: '/signup',
             failureFlash: true
         }),
+        getGoogleLogin: passport.authenticate('google', {
+            scope: ['email', 'profile']
+        }),
+        getGoogleLoginCallback: passport.authenticate('google', {
+            successRedirect: '/home',
+            failureRedirect: '/signup',
+            failureFlash: true
+        }),
+
         homePage: (req, res) => { res.render('home') }
     }
 }
