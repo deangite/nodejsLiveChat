@@ -32,7 +32,7 @@ passport.use(new GoogleStrategy({
             newUser.google = profile.id
             newUser.fullname = profile.displayName
             newUser.email = profile.emails[0].value
-            newUser.username = 'google'
+            newUser.username = profile.emails[0].value
             newUser.userImage = profile.photos[0].value
 
             newUser.save(function(err) {
