@@ -1,11 +1,10 @@
 'use strict';
-const passport = require('passport')
-module.exports = function(_, User){
+module.exports = function(_, User, passport){
     return {
         SetRouting: function(router){
             router.get('/', this.indexPage),
             router.get('/signup', this.getSignUp),
-            router.get('/home', this.homePage)
+            
             router.get('/auth/facebook', this.getFacebookLogin)
             router.get('/auth/facebook/callback', this.getFacebookLoginCallback)
             router.get('/auth/google', this.getGoogleLogin)
@@ -55,8 +54,6 @@ module.exports = function(_, User){
             successRedirect: '/home',
             failureRedirect: '/signup',
             failureFlash: true
-        }),
-
-        homePage: (req, res) => { res.render('home') }
+        })
     }
 }

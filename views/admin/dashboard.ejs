@@ -13,7 +13,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <form action="/dashboard" method="post" enctype="multipart/form-data">
+                <form action="/dashboard" method="post">
                     <div class="form-group">
                         <label for="club">Club</label>
                         <input type="text" name="club" class="form-control" placeholder="Club Name">
@@ -26,6 +26,7 @@
                         <button class="btn btn-lg upload-btn" type="button">Upload File</button>
                         <input type="file" name="upload" id="upload-input" style="display: none">
                     </div>
+                    <button class="btn btn-primary" type="submit">Add Group</button>
                 </form>
             </div>
         </div>
