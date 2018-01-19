@@ -10,11 +10,10 @@ module.exports = function(async, Club, _){
                     Club.find({}, (err, result) => {callback(err, result)})
                 },
                 callback => {
-                    Club.aggregate({
-                        $group: {
-                            _id: "$country"
-                        }
-                    }, (err, newResult) => {
+                    Club.aggregate([
+                        { $group: { _id: "$country" } },
+                        { $sort: {_id: 1} }
+                    ], (err, newResult) => {
                         callback(err, newResult)
                     })
                 }
