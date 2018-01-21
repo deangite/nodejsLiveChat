@@ -6,9 +6,10 @@ module.exports = function(io, Users){
         console.log('User Connected')
 
         socket.on('join', (params, callback) => {
+            const {name, room} = params
             socket.join(params.room)
-            users.addUserData(socket.id, params.name, params.room)
-            console.log(users)
+            users.addUserData(socket.id, name, room)
+            io.to(room).emit('usersList', users.getUsersList(room))
             callback()
         })
 

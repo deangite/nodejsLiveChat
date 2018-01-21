@@ -18,7 +18,13 @@ $(document).ready(function(){
         })
     })
 
-
+    socket.on('usersList', function(users){
+        var listTemplate = $('#users')
+        var usersList = users.map(function(user){
+            return `<p>${user}</p>`
+        })
+        listTemplate.append(usersList.join(' '))
+    })
 
     socket.on('newMessage', function(data){
         var template = $('#message-template').html()
